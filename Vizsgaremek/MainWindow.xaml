@@ -24,25 +24,25 @@
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 2 - Season 2" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Manga 2 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 3 - Season 3" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Manga 3 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 4 - Season 4" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Manga 4 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 5 - Season 5" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Manga 5 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
         </ListBox>

@@ -42,7 +42,7 @@ namespace Vizsgaremek
 
             var loginText = new TextBlock
             {
-                Text = "Bejelentkezés / Profil létrehozása",
+                Text = "Bejelentkezés",
                 Foreground = Brushes.White,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -53,10 +53,10 @@ namespace Vizsgaremek
 
             Content = grid;
         }
-        private void OpenProfileWindow(object sender, RoutedEventArgs e)
+        private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
         {
-            ProfileWindow profileWindow = new ProfileWindow();
-            profileWindow.ShowDialog();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
         }
     }
 }
