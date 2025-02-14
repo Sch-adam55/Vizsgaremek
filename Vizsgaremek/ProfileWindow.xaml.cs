@@ -12,48 +12,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vizsgaremek;
 
 namespace Vizsgaremek
 {
     public class ProfileWindow : Window
     {
-        public ProfileWindow()
-        {
-            Title = "Profil";
-            Width = 400;
-            Height = 300;
-            Background = Brushes.DarkGray;
+		public ProfileWindow()
+		{
+			OpenRegistrationWindow();
+		}
 
-            var grid = new Grid();
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
-            grid.RowDefinitions.Add(new RowDefinition());
-
-            var topBar = new TextBlock
-            {
-                Text = "Profil",
-                Foreground = Brushes.Black,
-                Background = Brushes.White,
-                FontSize = 20,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            Grid.SetRow(topBar, 0);
-            grid.Children.Add(topBar);
-
-            var loginText = new TextBlock
-            {
-                Text = "Bejelentkezés",
-                Foreground = Brushes.White,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(10)
-            };
-            Grid.SetRow(loginText, 1);
-            grid.Children.Add(loginText);
-
-            Content = grid;
-        }
-        private void OpenRegistrationWindow(object sender, RoutedEventArgs e)
+		public void OpenRegistrationWindow()
+		{
+			throw new NotImplementedException();
+		}
+		public void OpenRegistrationWindow(object sender, RoutedEventArgs e)
         {
             RegistrationWindow registrationWindow = new RegistrationWindow();
             registrationWindow.Show();

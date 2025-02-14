@@ -11,17 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    /// <summary>
-    /// Interaction logic for RegistrationWindow.xaml
-    /// </summary>
     public partial class RegistrationWindow : Window
     {
         public RegistrationWindow()
         {
-            InitializeComponent();
+         
         }
     }
 }
