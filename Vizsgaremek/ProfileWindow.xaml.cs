@@ -16,7 +16,7 @@ using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    public class ProfileWindow : Window
+    public class ProfileWindow : MainWindow
     {
 		public ProfileWindow()
 		{
@@ -30,9 +30,14 @@ namespace Vizsgaremek
 		public void OpenRegistrationWindow(object sender, RoutedEventArgs e)
         {
             RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
+            registrationWindow.ShowDialog();
         }
-    }
+
+		internal void ShowDialog()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
 
 

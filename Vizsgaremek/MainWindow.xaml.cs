@@ -12,12 +12,11 @@ using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
 		public MainWindow()
 		{
 			InitializeComponent();
-			OpenProfileWindow();
 			OpenProfileWindow_Click();
 		}
 
@@ -30,15 +29,11 @@ namespace Vizsgaremek
 		{
 			throw new NotImplementedException();
 		}
-
-		public void OpenProfileWindow()
-		{
-			ProfileWindow profileWindow = new ProfileWindow();
-			profileWindow.Show();
-		}
+	
 		private void OpenProfileWindow_Click(object sender, RoutedEventArgs e)
 		{
-			OpenProfileWindow();
+			ProfileWindow profileWindow = new ProfileWindow();
+			profileWindow.ShowDialog();
 		}
 	}
 }

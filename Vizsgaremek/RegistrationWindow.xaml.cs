@@ -15,11 +15,16 @@ using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    public partial class RegistrationWindow : Window
+    public partial class RegistrationWindow : MainWindow
     {
         public RegistrationWindow()
         {
          
         }
-    }
+
+		internal void ShowDialog()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
