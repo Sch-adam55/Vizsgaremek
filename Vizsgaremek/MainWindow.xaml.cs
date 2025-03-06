@@ -16,7 +16,6 @@ namespace Vizsgaremek
     {
 		public MainWindow()
 		{
-			InitializeComponent();
 			OpenProfileWindow_Click();
 		}
 

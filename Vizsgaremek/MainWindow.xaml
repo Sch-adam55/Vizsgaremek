@@ -1,59 +1,60 @@
 ﻿<Window x:Class="Vizsgaremek.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MangaHorizon" Height="600" Width="800" Background="DarkGray">
+        Title="MangaHorizon" Height="670" Width="800" Background="DarkGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Background="White" Grid.Row="0">
+        <Border Background="White" Grid.Row="0" Margin="0">
             <TextBlock Text="MangaHorizon" Foreground="Blue" FontSize="20" 
-                       HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
         </Border>
 
-        <ListBox x:Name="MangaList" Background="DarkGray" Grid.Row="1">
-            <ListBoxItem>
-				<StackPanel Orientation="Horizontal" Margin="10">
-					<Image Width="50" Height="50"/>
-					<TextBlock Text="Manga 1 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
-				</StackPanel>
-			</ListBoxItem>
-            <ListBoxItem>
+
+        <ListBox x:Name="MangaList" Background="DarkGray" Grid.Row="1" Grid.RowSpan="2">
+            <ListBoxItem Height="114">
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 2 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Image Width="88" Height="90" Source="/Images/MHA.png"/>
+                    <TextBlock Text="My Hero Academia - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem Height="114">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Image Width="88" Height="90" Source="/Images/OP.png"/>
+                    <TextBlock Text="One Piece - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 3 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Image Width="88" Height="90" Source="/Images/DN.png"/>
+                    <TextBlock Text="Dandadan - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Image Width="50" Height="50" Source="placeholder.jpg"/>
+                    <Image Width="88" Height="90" Source="/Images/BL.png"/>
                     <TextBlock Text="Manga 4 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
             <ListBoxItem>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Image Width="50" Height="50" Source="placeholder.jpg"/>
-                    <TextBlock Text="Manga 5 - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Image Width="88" Height="90" Source="/Images/DS.png"/>
+                    <TextBlock Text="Demon Slayer - Season 1" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </ListBoxItem>
         </ListBox>
 
-        <Border Background="White" Grid.Row="1" Margin="0,487,0,0" Grid.RowSpan="2">
+        <Border Background="White" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Kezdőoldal" Background="White" Foreground="Blue" Margin="5" Height="28"/>
-				<Button Content="Kedvencek" Background="White" Foreground="Blue" Margin="5" Height="28"/>
-				<Button Content="Profil" Background="White" Foreground="Blue" Margin="5" Height="28" Click="OpenProfileWindow_Click"/>
-				<Button Content="Kereső" Background="White" Foreground="Blue" Margin="5" Height="28"/>
-				<Button Content="Menü" Background="White" Foreground="Blue" Margin="5" Height="28"/>
+                <Button Content="Kedvencek" Background="White" Foreground="Blue" Margin="5" Height="28"/>
+                <Button Content="Profil" Background="White" Foreground="Blue" Margin="5" Height="28" Click="OpenProfileWindow_Click"/>
+                <Button Content="Kereső" Background="White" Foreground="Blue" Margin="5" Height="28"/>
+                <Button Content="Menü" Background="White" Foreground="Blue" Margin="5" Height="28"/>
             </StackPanel>
         </Border>
     </Grid>
