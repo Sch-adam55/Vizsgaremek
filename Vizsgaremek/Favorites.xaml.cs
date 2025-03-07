@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-    public partial class FavoritesWindow : MainWindow
+    public partial class FavoritesWindow : Fooldal
     {
         private List<string> favoriteManga;
 

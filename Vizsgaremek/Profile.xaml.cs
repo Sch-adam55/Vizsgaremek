@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,26 +11,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    public class ProfileWindow : MainWindow
-    {
-		public ProfileWindow()
+	public partial class Profile : Window
+	{
+		public Profile()
 		{
-			OpenRegistrationWindow();
+			InitializeComponent();
+			OpenRegistration();
 		}
-
-		public void OpenRegistrationWindow()
+		public void OpenRegistration()
 		{
 			throw new NotImplementedException();
 		}
-		public void OpenRegistrationWindow(object sender, RoutedEventArgs e)
-        {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.ShowDialog();
-        }
+		public void OpenRegistration(object sender, RoutedEventArgs e)
+		{
+			Registration registrationWindow = new Registration();
+			registrationWindow.ShowDialog();
+		}
 
 		internal void ShowDialog()
 		{
@@ -39,5 +37,3 @@ namespace Vizsgaremek
 		}
 	}
 }
-
-

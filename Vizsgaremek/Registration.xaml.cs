@@ -11,20 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Vizsgaremek;
 
 namespace Vizsgaremek
 {
-    public partial class RegistrationWindow : MainWindow
-    {
-        public RegistrationWindow()
-        {
-         
-        }
-
-		internal void ShowDialog()
+	public partial class Registration : Window
+	{
+		public Registration()
 		{
-			throw new NotImplementedException();
+			InitializeComponent();
 		}
 	}
 }
