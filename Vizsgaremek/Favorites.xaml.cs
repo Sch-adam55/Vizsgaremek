@@ -14,15 +14,15 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-    public partial class FavoritesWindow : Fooldal
+    public partial class Favorites : Window
     {
         private List<string> favoriteManga;
 
-        public FavoritesWindow(List<string> favorites)
+        public Favorites(List<string> favorites)
         {
             InitializeComponent();
-            favoriteManga = favorites;
-            FavoriteList.ItemsSource = favoriteManga;
+			favoriteManga = favorites;
+       
         }
 
         private void RemoveFromFavorites_Click(object sender, RoutedEventArgs e)
@@ -34,8 +34,7 @@ namespace Vizsgaremek
                 if (mangaTitle != null)
                 {
                     favoriteManga.Remove(mangaTitle);
-                    FavoriteList.ItemsSource = null;
-                    FavoriteList.ItemsSource = favoriteManga; 
+                 
                 }
             }
         }

@@ -18,7 +18,7 @@
 			<TextBox Width="200" Height="25" Text="Felhasználónév" Margin="5"/>
 			<TextBox Width="200" Height="25" Text="Jelszó" Margin="5"/>
 			<Button Content="Bejelentkezés" Width="100" Height="30" Background="White" Foreground="Black" Margin="10"/>
-			<Button Content="Regisztráció" Width="100" Height="30" Background="White" Foreground="Black" Margin="10" Click="OpenRegistrationWindow"/>
+			<Button Content="Regisztráció" Width="100" Height="30" Background="White" Foreground="Black" Margin="10" Click="OpenRegistration"/>
 		</StackPanel>
 	</Grid>
 </Window>
