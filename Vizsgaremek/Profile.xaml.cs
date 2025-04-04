@@ -20,12 +20,13 @@ namespace Vizsgaremek
 		public Profile()
 		{
 			InitializeComponent();
-			OpenRegistration();
 			database = new Database();
 		}
-		public void OpenRegistration()
+
+		private void OpenFooldal_Click(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			Fooldal fooldal = new Fooldal();
+			fooldal.ShowDialog();
 		}
 		public void OpenRegistration(object sender, RoutedEventArgs e)
 		{
@@ -33,11 +34,5 @@ namespace Vizsgaremek
 			registrationWindow.ShowDialog();
 		}
 
-		internal void ShowDialog()
-		{
-			throw new NotImplementedException();
-		}
-
-	
 	}
 }

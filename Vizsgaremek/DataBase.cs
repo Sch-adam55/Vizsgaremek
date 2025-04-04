@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 using MySql.Data.MySqlClient;
 
 namespace Vizsgaremek
@@ -10,10 +11,9 @@ namespace Vizsgaremek
 	internal class Database
 	{
 		private string connectionString;
-
-		public Database(string server, string database, string dataname)
+		public Database()
 		{
-			connectionString = $"localhost={server};ikt_project={database};root={dataname};";
+			connectionString = "Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;";
 		}
 
 		private MySqlConnection OpenConnection()
@@ -25,7 +25,7 @@ namespace Vizsgaremek
 
 		public bool RegisterUser(string email, string profilename, string password)
 		{
-			string hashPassword = HashPassword(password);
+			string hashedPassword = HashPassword(password);
 
 			using (var conn = OpenConnection())
 			{
@@ -33,7 +33,7 @@ namespace Vizsgaremek
 				MySqlCommand cmd = new MySqlCommand(query, conn);
 				cmd.Parameters.AddWithValue("@email", email);
 				cmd.Parameters.AddWithValue("@profilename", profilename);
-				cmd.Parameters.AddWithValue("@password", hashPassword);
+				cmd.Parameters.AddWithValue("@password", hashedPassword);
 
 				try
 				{
@@ -49,6 +49,7 @@ namespace Vizsgaremek
 			}
 		}
 
+	
 		public bool LoginUser(string email, string password)
 		{
 			using (var conn = OpenConnection())
@@ -81,6 +82,19 @@ namespace Vizsgaremek
 						return false;
 					}
 				}
+			}
+		}
+		private string HashPassword(string password)
+		{
+			using (SHA256 sha256 = SHA256.Create())
+			{
+				byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+				StringBuilder builder = new StringBuilder();
+				foreach (byte b in bytes)
+				{
+					builder.Append(b.ToString("x2"));
+				}
+				return builder.ToString();
 			}
 		}
 		private bool VerifyPassword(string password, string hashedPassword)

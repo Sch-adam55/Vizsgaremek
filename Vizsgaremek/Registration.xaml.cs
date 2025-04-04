@@ -22,5 +22,11 @@ namespace Vizsgaremek
 			InitializeComponent();
 			database = new Database();
 		}
+
+		private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+		{
+			Fooldal fooldal = new Fooldal();
+			fooldal.ShowDialog();
+		}
 	}
 }

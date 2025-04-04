@@ -19,17 +19,12 @@ namespace Vizsgaremek
 		public Fooldal()
 		{
 			InitializeComponent();
-			OpenProfile_Click();
-		}
-		public void OpenProfile_Click()
-		{
-			throw new NotImplementedException();
 		}
 
 		private void OpenProfile_Click(object sender, RoutedEventArgs e)
 		{
-			Profile profileWindow = new Profile();
-			profileWindow.ShowDialog();
+			Profile profile = new Profile();
+			profile.ShowDialog();
 		}
 		private void FavoriteButton_Click(object sender, RoutedEventArgs e)
 		{
