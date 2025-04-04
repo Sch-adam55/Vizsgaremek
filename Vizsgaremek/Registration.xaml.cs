@@ -22,28 +22,5 @@ namespace Vizsgaremek
 			InitializeComponent();
 			database = new Database();
 		}
-		private void RegisterButton_Click(object sender, RoutedEventArgs e)
-		{
-			string email = EmailTextBox.Text.Trim();
-			string username = UsernameTextBox.Text.Trim();
-			string password = PasswordTextBox.Password.Trim();
-
-			if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-			{
-				MessageBox.Show("Minden mezőt ki kell tölteni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
-				return;
-			}
-
-			bool success = dbHelper.RegisterUser(email, username, password);
-			if (success)
-			{
-				MessageBox.Show("Sikeres regisztráció!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-				this.Close(); 
-			}
-			else
-			{
-				MessageBox.Show("Hiba történt a regisztráció során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-			}
-		}
 	}
 }

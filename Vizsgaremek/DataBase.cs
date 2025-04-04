@@ -9,31 +9,85 @@ namespace Vizsgaremek
 {
 	internal class Database
 	{
-		private string connectionString = "server=localhost;database=;user=root;";
+		private string connectionString;
 
-		public bool AuthenticateUser(string username, string password)
+		public Database(string server, string database, string dataname)
 		{
-			using (MySqlConnection conn = new MySqlConnection(connectionString))
+			connectionString = $"localhost={server};ikt_project={database};root={dataname};";
+		}
+
+		private MySqlConnection OpenConnection()
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			conn.Open();
+			return conn;
+		}
+
+		public bool RegisterUser(string email, string profilename, string password)
+		{
+			string hashPassword = HashPassword(password);
+
+			using (var conn = OpenConnection())
 			{
+				string query = "INSERT INTO `user` (`email`, `profilename`, `password`) VALUES (@email, @profilename, @password)";
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@email", email);
+				cmd.Parameters.AddWithValue("@profilename", profilename);
+				cmd.Parameters.AddWithValue("@password", hashPassword);
+
 				try
 				{
-					conn.Open();
-					string query = "SELECT COUNT(*) FROM users WHERE username = @username AND password = SHA2(@password, 256)";
-					using (MySqlCommand cmd = new MySqlCommand(query, conn))
-					{
-						cmd.Parameters.AddWithValue("@username", username);
-						cmd.Parameters.AddWithValue("@password", password);
-
-						int count = Convert.ToInt32(cmd.ExecuteScalar());
-						return count > 0;
-					}
+					cmd.ExecuteNonQuery();
+					Console.WriteLine("User registered successfully.");
+					return true;
 				}
-				catch (Exception ex)
+				catch (MySqlException ex)
 				{
-					Console.WriteLine("Adatbázis hiba: " + ex.Message);
+					Console.WriteLine("Error: " + ex.Message);
 					return false;
 				}
 			}
 		}
+
+		public bool LoginUser(string email, string password)
+		{
+			using (var conn = OpenConnection())
+			{
+				string query = "SELECT `password` FROM `user` WHERE `email` = @email";
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@email", email);
+
+				using (var reader = cmd.ExecuteReader())
+				{
+					if (reader.HasRows)
+					{
+						reader.Read();
+						string storedHashedPassword = reader.GetString("password");
+
+						if (VerifyPassword(password, storedHashedPassword))
+						{
+							Console.WriteLine("Login successful.");
+							return true;
+						}
+						else
+						{
+							Console.WriteLine("Invalid password.");
+							return false;
+						}
+					}
+					else
+					{
+						Console.WriteLine("User not found.");
+						return false;
+					}
+				}
+			}
+		}
+		private bool VerifyPassword(string password, string hashedPassword)
+		{
+			string hashedInputPassword = HashPassword(password);
+			return hashedInputPassword == hashedPassword;
+		}
+
 	}
 }

@@ -38,22 +38,6 @@ namespace Vizsgaremek
 			throw new NotImplementedException();
 		}
 
-		private void btnLogin_Click(object sender, RoutedEventArgs e)
-		{
-			string username = txtUsername.Text;
-			string password = txtPassword.Password;
-
-			if (database.AuthenticateUser(username, password))
-			{
-				MessageBox.Show("Sikeres bejelentkezés!", "Üdv", MessageBoxButton.OK, MessageBoxImage.Information);
-				Fooldal foolad= new Fooldal();
-				foolad.Show();
-				this.Close();
-			}
-			else
-			{
-				MessageBox.Show("Hibás felhasználónév vagy jelszó!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-			}
-		}
+	
 	}
 }
