@@ -16,27 +16,26 @@ namespace Vizsgaremek
 {
     public partial class Favorites : Window
     {
-        private List<string> favoriteManga;
-
-        public Favorites(List<string> favorites)
+        public Favorites(HashSet<string> favorites)
         {
             InitializeComponent();
-			favoriteManga = favorites;
-       
-        }
 
-        private void RemoveFromFavorites_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            if (button != null)
+            foreach (var manga in favorites)
             {
-                var mangaTitle = (button.DataContext as string);
-                if (mangaTitle != null)
+                TextBlock tb = new TextBlock
                 {
-                    favoriteManga.Remove(mangaTitle);
-                 
-                }
+                    Text = manga,
+                    Foreground = Brushes.White,
+                    FontSize = 18,
+                    Margin = new Thickness(10)
+                };
+                FavoritesPanel.Children.Add(tb);
             }
+        }
+        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+        {
+            Fooldal fooldal = new Fooldal();
+            fooldal.ShowDialog();
         }
     }
 }

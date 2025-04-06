@@ -30,7 +30,7 @@ namespace Vizsgaremek
 			using (var conn = OpenConnection())
 			{
 				string query = "INSERT INTO `user` (`email`, `profilename`, `password`) VALUES (@email, @profilename, @password)";
-				MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlCommand cmd = new MySqlCommand(query, conn);
 				cmd.Parameters.AddWithValue("@email", email);
 				cmd.Parameters.AddWithValue("@profilename", profilename);
 				cmd.Parameters.AddWithValue("@password", hashedPassword);

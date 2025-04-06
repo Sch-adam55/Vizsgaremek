@@ -17,7 +17,8 @@ namespace Vizsgaremek
 	public partial class Profile : Window
 	{
 		private Database database;
-		public Profile()
+        private HashSet<string> favoriteMangas = new HashSet<string>();
+        public Profile()
 		{
 			InitializeComponent();
 			database = new Database();
@@ -33,6 +34,22 @@ namespace Vizsgaremek
 			Registration registrationWindow = new Registration();
 			registrationWindow.ShowDialog();
 		}
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button? button = sender as Button;
+            string mangaTitle = button.Tag.ToString();
+            Image? img = button.Content as Image;
 
-	}
+            if (favoriteMangas.Contains(mangaTitle))
+            {
+                favoriteMangas.Remove(mangaTitle);
+                img.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
+            }
+            else
+            {
+                favoriteMangas.Add(mangaTitle);
+                img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
+            }
+        }
+    }
 }
