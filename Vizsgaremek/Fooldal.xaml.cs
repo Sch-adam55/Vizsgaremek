@@ -23,7 +23,7 @@ namespace Vizsgaremek
 		}
 		public void OpenProfile_Click()
 		{
-			throw new NotImplementedException();
+            Console.WriteLine("Profile button clicked");
 		}
 
 		private void OpenProfile_Click(object sender, RoutedEventArgs e)

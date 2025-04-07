@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,30 +15,24 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-	public partial class Profile : Window
-	{
-		private Database database;
-		public Profile()
-		{
-			InitializeComponent();
-			OpenRegistration();
-			database = new Database();
-		}
-		public void OpenRegistration()
-		{
-			throw new NotImplementedException();
-		}
-		public void OpenRegistration(object sender, RoutedEventArgs e)
-		{
-			Registration registrationWindow = new Registration();
-			registrationWindow.ShowDialog();
-		}
+    public partial class Profile : Window
+    {
+        public Profile()
+        {
+            InitializeComponent();
+            OpenRegistration();
+        }
+        public void OpenRegistration()
+        {
+            Registration registrationWindow = new Registration();
+            registrationWindow.ShowDialog();
 
-		internal void ShowDialog()
-		{
-			throw new NotImplementedException();
-		}
+        }
+        public void OpenRegistration(object sender, RoutedEventArgs e)
+        {
+            Registration registrationWindow = new Registration();
+            registrationWindow.ShowDialog();
+        }
 
-	
-	}
+    }
 }
