@@ -14,37 +14,23 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-	public partial class Registration : Window
-	{
-		private Database database;
+    public partial class Registration : Window
+    {
         private HashSet<string> favoriteMangas = new HashSet<string>();
         public Registration()
-		{
-			InitializeComponent();
-			database = new Database();
-		}
-
-		private void OpenFooldal_Click(object sender, RoutedEventArgs e)
-		{
-			Fooldal fooldal = new Fooldal();
-			fooldal.ShowDialog();
-		}
-        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            Button? button = sender as Button;
-            string mangaTitle = button.Tag.ToString();
-            Image? img = button.Content as Image;
+            InitializeComponent();
+        }
 
-            if (favoriteMangas.Contains(mangaTitle))
-            {
-                favoriteMangas.Remove(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
-            }
-            else
-            {
-                favoriteMangas.Add(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
-            }
+        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+        {
+            Fooldal fooldal = new Fooldal();
+            fooldal.ShowDialog();
+        }
+        private void OpenProfile_Click(object sender, RoutedEventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.ShowDialog();
         }
     }
 }

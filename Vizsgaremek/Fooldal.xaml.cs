@@ -13,19 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 namespace Vizsgaremek
 {
-	public partial class Fooldal : Window
-	{
+    public partial class Fooldal : Window
+    {
         private HashSet<string> favoriteMangas = new HashSet<string>();
         public Fooldal()
-		{
-			InitializeComponent();
-		}
+        {
+            InitializeComponent();
+        }
 
-		private void OpenProfile_Click(object sender, RoutedEventArgs e)
-		{
-			Profile profile = new Profile();
-			profile.ShowDialog();
-		}
+        private void OpenProfile_Click(object sender, RoutedEventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.ShowDialog();
+        }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;

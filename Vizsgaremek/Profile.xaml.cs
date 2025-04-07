@@ -14,26 +14,24 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-	public partial class Profile : Window
-	{
-		private Database database;
+    public partial class Profile : Window
+    {
         private HashSet<string> favoriteMangas = new HashSet<string>();
         public Profile()
-		{
-			InitializeComponent();
-			database = new Database();
-		}
+        {
+            InitializeComponent();
+        }
 
-		private void OpenFooldal_Click(object sender, RoutedEventArgs e)
-		{
-			Fooldal fooldal = new Fooldal();
-			fooldal.ShowDialog();
-		}
-		public void OpenRegistration(object sender, RoutedEventArgs e)
-		{
-			Registration registrationWindow = new Registration();
-			registrationWindow.ShowDialog();
-		}
+        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+        {
+            Fooldal fooldal = new Fooldal();
+            fooldal.ShowDialog();
+        }
+        public void OpenRegistration(object sender, RoutedEventArgs e)
+        {
+            Registration registrationWindow = new Registration();
+            registrationWindow.ShowDialog();
+        }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;

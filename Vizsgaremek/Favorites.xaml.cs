@@ -20,7 +20,7 @@ namespace Vizsgaremek
         {
             InitializeComponent();
 
-            foreach (var manga in favorites)
+            foreach (string manga in favorites)
             {
                 TextBlock tb = new TextBlock
                 {
