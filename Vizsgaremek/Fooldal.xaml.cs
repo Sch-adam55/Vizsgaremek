@@ -15,44 +15,41 @@ namespace Vizsgaremek
 {
 	public partial class Fooldal : Window
 	{
-		private List<string> favoriteManga = new List<string>();
-		public Fooldal()
+        private HashSet<string> favoriteMangas = new HashSet<string>();
+        public Fooldal()
 		{
 			InitializeComponent();
+<<<<<<< HEAD
 			OpenProfile_Click();
 		}
 		public void OpenProfile_Click()
 		{
             Console.WriteLine("Profile button clicked");
+=======
+>>>>>>> 28dd3f46719ca737479d2eca067b4d21cffb2c17
 		}
 
 		private void OpenProfile_Click(object sender, RoutedEventArgs e)
 		{
-			Profile profileWindow = new Profile();
-			profileWindow.ShowDialog();
+			Profile profile = new Profile();
+			profile.ShowDialog();
 		}
-		private void FavoriteButton_Click(object sender, RoutedEventArgs e)
-		{
-			if (sender is Button button && button.Content is Image heartImage)
-			{
-				string currentSource = heartImage.Source.ToString();
-				var textBlock = ((StackPanel)button.Parent).Children.OfType<TextBlock>().FirstOrDefault();
-				if (textBlock != null)
-				{
-					string title = textBlock.Text;
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button? button = sender as Button;
+            string mangaTitle = button.Tag.ToString();
+            Image? img = button.Content as Image;
 
-					if (currentSource.Contains("heart_empty.png"))
-					{
-						heartImage.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
-						favoriteManga.Add(title);
-					}
-					else
-					{
-						heartImage.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
-						favoriteManga.Remove(title);
-					}
-				}
-			}
-		}
-	}
+            if (favoriteMangas.Contains(mangaTitle))
+            {
+                favoriteMangas.Remove(mangaTitle);
+                img.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
+            }
+            else
+            {
+                favoriteMangas.Add(mangaTitle);
+                img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
+            }
+        }
+    }
 }

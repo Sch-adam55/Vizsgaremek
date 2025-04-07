@@ -15,12 +15,22 @@
                        HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
 		</Border>
 
-		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,46,0,0" Grid.RowSpan="2">
 			<TextBlock Text="Regisztráció" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
 			<TextBox x:Name="EmailTextBox" Width="200" Height="25" Margin="5"/>
 			<TextBox x:Name="ProfileNameTextBox" Width="200" Height="25"  Margin="5"/>
 			<PasswordBox x:Name="PasswordBox" Width="200" Height="25" Margin="5" />
             <Button Content="Regisztráció" Width="100" Height="30" Background="White" Foreground="Black" Margin="10" Click="Button_Click"/>
 		</StackPanel>
+
+		<Border Background="White" Grid.Row="1" Margin="0,200,0,0">
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Content="Kezdőoldal" Background="White" Foreground="Blue" Margin="5" Height="20" Click="OpenFooldal_Click"/>
+				<Button Content="Kedvencek" Background="White" Foreground="Blue" Margin="5" Height="20"/>
+				<Button Content="Profil" Background="White" Foreground="Blue" Margin="5" Height="20" Click="OpenProfile_Click"/>
+				<Button Content="Kereső" Background="White" Foreground="Blue" Margin="5" Height="20"/>
+				<Button Content="Menü" Background="White" Foreground="Blue" Margin="5" Height="20"/>
+			</StackPanel>
+		</Border>
 	</Grid>
 </Window>
