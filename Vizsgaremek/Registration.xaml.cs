@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace Vizsgaremek
 {
-<<<<<<< HEAD
+<<<<<<< HEAD  
     public partial class Registration : Window
     {
         public Registration()
