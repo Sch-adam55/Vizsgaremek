@@ -1,6 +1,8 @@
-﻿using System.Configuration;
+﻿using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Data;
 using System.Windows;
+using static Vizsgaremek.Fooldal;
 
 namespace Vizsgaremek
 {
@@ -9,6 +11,7 @@ namespace Vizsgaremek
     /// </summary>
     public partial class App : Application
     {
+        
     }
 
 }

@@ -9,6 +9,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\BL.png" />
+    <None Remove="Images\DN.png" />
+    <None Remove="Images\DS.png" />
+    <None Remove="Images\heart_empty.png" />
+    <None Remove="Images\heart_filled.png" />
+    <None Remove="Images\MHA.png" />
+    <None Remove="Images\OP.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DN.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DS.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Images\heart_empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\heart_filled.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\MHA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\OP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.2.0" />
   </ItemGroup>
 

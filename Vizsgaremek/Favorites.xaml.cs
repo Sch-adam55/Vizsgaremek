@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Mysqlx.Crud;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,26 +18,26 @@ namespace Vizsgaremek
 {
     public partial class Favorites : Window
     {
-        public Favorites(HashSet<string> favorites)
+        public Favorites()
         {
             InitializeComponent();
-
-            foreach (string manga in favorites)
-            {
-                TextBlock tb = new TextBlock
-                {
-                    Text = manga,
-                    Foreground = Brushes.White,
-                    FontSize = 18,
-                    Margin = new Thickness(10)
-                };
-                FavoritesPanel.Children.Add(tb);
-            }
+            RefreshList();
+            Fooldal.FavoriteMangaTitles.CollectionChanged += (s, e) => RefreshList();
         }
-        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+
+        public void RefreshList()
         {
-            Fooldal fooldal = new Fooldal();
-            fooldal.ShowDialog();
+            Dispatcher.Invoke(() =>
+            {
+                FavoritesList.ItemsSource = null;
+                FavoritesList.ItemsSource = Fooldal.FavoriteMangaTitles;
+            });
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            ((Fooldal)Owner)?._openFavoritesWindows?.Remove(this);
+            base.OnClosed(e);
         }
     }
 }

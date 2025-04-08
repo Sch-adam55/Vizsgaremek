@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,38 +17,9 @@ namespace Vizsgaremek
 {
     public partial class Profile : Window
     {
-        private HashSet<string> favoriteMangas = new HashSet<string>();
         public Profile()
         {
             InitializeComponent();
-        }
-
-        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
-        {
-            Fooldal fooldal = new Fooldal();
-            fooldal.ShowDialog();
-        }
-        public void OpenRegistration(object sender, RoutedEventArgs e)
-        {
-            Registration registrationWindow = new Registration();
-            registrationWindow.ShowDialog();
-        }
-        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button? button = sender as Button;
-            string mangaTitle = button.Tag.ToString();
-            Image? img = button.Content as Image;
-
-            if (favoriteMangas.Contains(mangaTitle))
-            {
-                favoriteMangas.Remove(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
-            }
-            else
-            {
-                favoriteMangas.Add(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
-            }
         }
     }
 }
