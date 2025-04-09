@@ -12,16 +12,19 @@
         <Border Background="White" Grid.Row="0" Margin="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="113*"/>
+                    <ColumnDefinition Width="235*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="MangaHorizon" Foreground="Blue" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="324,0,0,0"/>
-                <Button Content="Bejelentkezés" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Padding="10,5" Foreground="Blue" Background="White" Click="OpenProfile_Click"/>
+                <TextBlock Text="MangaHorizon" Foreground="Blue" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="98,0,0,0" Grid.Column="1"/>
+                <TextBlock Text="Keresö: " Foreground="Blue" Margin="10,14,170,10" />
+                <TextBox x:Name="SearchBox" VerticalAlignment="Center" Margin="59,0,43,0" TextChanged="SearchBox_TextChanged" Height="28"/>
+                <Button Content="Bejelentkezés" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10,5" Foreground="Blue" Background="White" Click="OpenProfile_Click"/>
             </Grid>
         </Border>
 
         <ListBox x:Name="MangaList" Background="DarkGray" Grid.Row="1" Grid.RowSpan="2">
-            <ListBoxItem>
+            <ListBoxItem x:Name="Manga1">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -29,13 +32,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Image Width="88" Height="90" Source="/Images/MHA.png" Margin="0,0,23,0"/>
-                    <TextBlock Text="My Hero Academia" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="MangaName1" Text="My Hero Academia" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
                     <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                         <Image Width="128" Height="30" Source="/Images/heart_empty.png"/>
                     </Button>
                 </Grid>
             </ListBoxItem>
-            <ListBoxItem>
+            <ListBoxItem x:Name="Manga2">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -43,13 +46,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Image Width="88" Height="90" Source="/Images/OP.png" Margin="0,0,23,0"/>
-                    <TextBlock Text="One pieca" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="MangaName2" Text="One pieca" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
                     <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                         <Image Width="128" Height="30" Source="/Images/heart_empty.png"/>
                     </Button>
                 </Grid>
             </ListBoxItem>
-            <ListBoxItem>
+            <ListBoxItem x:Name="Manga3">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -57,13 +60,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Image Width="88" Height="90" Source="/Images/DN.png" Margin="0,0,23,0"/>
-                    <TextBlock Text="Dandadan" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="MangaName3" Text="Dandadan" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
                     <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                         <Image Width="128" Height="30" Source="/Images/heart_empty.png"/>
                     </Button>
                 </Grid>
             </ListBoxItem>
-            <ListBoxItem>
+            <ListBoxItem x:Name="Manga4">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -71,13 +74,13 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Image Width="88" Height="90" Source="/Images/DS.png" Margin="0,0,23,0"/>
-                    <TextBlock Text="Damen Slayer" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="MangaName4" Text="Damen Slayer" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
                     <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                         <Image Width="128" Height="30" Source="/Images/heart_empty.png"/>
                     </Button>
                 </Grid>
             </ListBoxItem>
-            <ListBoxItem>
+            <ListBoxItem x:Name="Manga5">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -85,7 +88,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Image Width="88" Height="90" Source="/Images/BL.png" Margin="0,0,23,0"/>
-                    <TextBlock Text="Blue Lock" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="MangaName5" Text="Blue Lock" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3"/>
                     <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                         <Image Width="128" Height="30" Source="/Images/heart_empty.png" RenderTransformOrigin="0.883,0.5"/>
                     </Button>
@@ -98,7 +101,6 @@
                 <Button Content="Kezdőoldal" Background="White" Foreground="Blue" Margin="5" Height="28"/>
                 <Button Content="Kedvencek" Background="White" Foreground="Blue" Margin="5" Height="28" Click="OpenFavorites_Click"/>
                 <Button Content="Regisztráció" Background="White" Foreground="Blue" Margin="5" Height="28" Click="OpenRegistration_Click"/>
-                <Button Content="Kereső" Background="White" Foreground="Blue" Margin="5" Height="28"/>
                 <Button Content="Menü" Background="White" Foreground="Blue" Margin="5" Height="28"/>
             </StackPanel>
         </Border>

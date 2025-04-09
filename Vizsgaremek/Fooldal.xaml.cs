@@ -15,17 +15,28 @@ namespace Vizsgaremek
 {
     public partial class Fooldal : Window
     {
-        private HashSet<string> favoriteMangas = new HashSet<string>();
+        private List<string> favoriteMangas = new List<string>();
         public Fooldal()
 		{
 			InitializeComponent();
-		}
+        }
 
         private void OpenProfile_Click(object sender, RoutedEventArgs e)
         {
             Profile profile = new Profile();
             profile.ShowDialog();
         }
+        private void OpenRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            Registration registration = new Registration();
+            registration.ShowDialog();
+        }
+        private void OpenFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            Favorites favoritesWindow = new Favorites(favoriteMangas);
+            favoritesWindow.Show();
+        }
+
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;
@@ -43,5 +54,26 @@ namespace Vizsgaremek
                 img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
             }
         }
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchBox.Text.ToLower();
+            foreach (ListBoxItem item in MangaList.Items)
+            {
+                var textBlock = (TextBlock)item.FindName("MangaName_" + item.Tag);
+                var mangaName = textBlock?.Text.ToLower();
+
+                if (!string.IsNullOrEmpty(mangaName) && mangaName.Contains(searchText))
+                {
+                    item.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    item.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
     }
 }
+    
+
