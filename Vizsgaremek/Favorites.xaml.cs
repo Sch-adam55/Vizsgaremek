@@ -13,31 +13,59 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static Vizsgaremek.Fooldal;
 
 namespace Vizsgaremek
 {
     public partial class Favorites : Window
     {
-        public Favorites()
+        private List<string> favoriteMangas;
+
+        public Favorites(List<string> favoriteMangas)
         {
             InitializeComponent();
-            RefreshList();
-            Fooldal.FavoriteMangaTitles.CollectionChanged += (s, e) => RefreshList();
+            this.favoriteMangas = favoriteMangas;
+            LoadFavorites();
+        }
+        private void OpenProfile_Click(object sender, RoutedEventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.ShowDialog();
+        }
+        private void OpenFooldal_Click(object sender, RoutedEventArgs e)
+        {
+            Fooldal fooldal = new Fooldal();
+            fooldal.ShowDialog();
         }
 
-        public void RefreshList()
+        private void LoadFavorites()
         {
-            Dispatcher.Invoke(() =>
-            {
-                FavoritesList.ItemsSource = null;
-                FavoritesList.ItemsSource = Fooldal.FavoriteMangaTitles;
-            });
-        }
+            foreach (var mangaTitle in favoriteMangas)
+            { 
+                ListBoxItem item = new ListBoxItem();
+                StackPanel panel = new StackPanel { Orientation = Orientation.Horizontal };
 
-        protected override void OnClosed(EventArgs e)
-        {
-            ((Fooldal)Owner)?._openFavoritesWindows?.Remove(this);
-            base.OnClosed(e);
+               
+                TextBlock mangaText = new TextBlock
+                {
+                    Text = mangaTitle,
+                    Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White),
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                panel.Children.Add(mangaText);
+
+               
+                Image heartImage = new Image
+                {
+                    Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative)),
+                    Width = 20,
+                    Height = 20,
+                    Margin = new Thickness(10, 0, 0, 0)
+                };
+                panel.Children.Add(heartImage);
+
+                item.Content = panel;
+            }
         }
     }
 }
