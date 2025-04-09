@@ -26,6 +26,16 @@ namespace Vizsgaremek
             Profile profile = new Profile();
             profile.ShowDialog();
         }
+        private void OpenRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            Registration registration = new Registration();
+            registration.ShowDialog();
+        }
+        private void OpenFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            Favorites favorites = new Favorites();
+            favorites.ShowDialog();
+        }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button? button = sender as Button;
