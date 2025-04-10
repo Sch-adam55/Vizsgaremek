@@ -58,7 +58,6 @@ namespace Vizsgaremek
             catch (Exception ex)
             {
                 MessageBox.Show("Hiba: " + ex.Message);
-
             }
         }
     }

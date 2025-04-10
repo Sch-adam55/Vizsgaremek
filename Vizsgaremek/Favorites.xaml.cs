@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static Vizsgaremek.Fooldal;
 
 namespace Vizsgaremek
 {
@@ -26,7 +25,9 @@ namespace Vizsgaremek
             InitializeComponent();
             this.favoriteMangas = favoriteMangas;
             LoadFavorites();
+          
         }
+
         private void OpenProfile_Click(object sender, RoutedEventArgs e)
         {
             Profile profile = new Profile();
@@ -40,12 +41,12 @@ namespace Vizsgaremek
 
         private void LoadFavorites()
         {
+            FavoritesListBox.Items.Clear();
             foreach (var mangaTitle in favoriteMangas)
-            { 
+            {
                 ListBoxItem item = new ListBoxItem();
                 StackPanel panel = new StackPanel { Orientation = Orientation.Horizontal };
 
-               
                 TextBlock mangaText = new TextBlock
                 {
                     Text = mangaTitle,
@@ -54,7 +55,6 @@ namespace Vizsgaremek
                 };
                 panel.Children.Add(mangaText);
 
-               
                 Image heartImage = new Image
                 {
                     Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative)),
@@ -65,6 +65,7 @@ namespace Vizsgaremek
                 panel.Children.Add(heartImage);
 
                 item.Content = panel;
+                FavoritesListBox.Items.Add(item); 
             }
         }
     }
