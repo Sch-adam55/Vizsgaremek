@@ -15,18 +15,40 @@ namespace Vizsgaremek
 {
     public partial class Fooldal : Window
     {
-        private List<string> favoriteMangas = new List<string>();
+        public static List<string> FavoriteMangas = new List<string>();
+        private Favorites favorites;
+        private Kezdooldal Kezdooldal;
+        private Dictionary<string, Image> heartImages = new Dictionary<string, Image>();
+
         public Fooldal()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
+            InitializeHeartImages();
+            UpdateAllHeartIcons();
         }
 
-		private void OpenKezdooldal(object sender, RoutedEventArgs e)
-		{
-			Kezdooldal kezdooldal = new Kezdooldal();
-			kezdooldal.ShowDialog();
-		}
-		private void OpenProfile_Click(object sender, RoutedEventArgs e)
+        private void UpdateAllHeartIcons()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OpenKezdooldal(object sender, RoutedEventArgs e)
+        {
+
+            var kezdooldal = Application.Current.Windows.OfType<Kezdooldal>().FirstOrDefault();
+
+            if (kezdooldal == null)
+            {
+                kezdooldal = new Kezdooldal();
+            }
+
+            kezdooldal.Show();
+            kezdooldal.WindowState = WindowState.Normal;
+            kezdooldal.Focus();
+
+            this.Close();
+        }
+        private void OpenProfile_Click(object sender, RoutedEventArgs e)
         {
             Profile profile = new Profile();
             profile.ShowDialog();
@@ -38,8 +60,16 @@ namespace Vizsgaremek
         }
         private void OpenFavorites_Click(object sender, RoutedEventArgs e)
         {
-            Favorites favorites = new Favorites(favoriteMangas);
-            favorites.ShowDialog();
+            if (Application.Current.Windows.OfType<Favorites>().Any())
+            {
+                Application.Current.Windows.OfType<Favorites>().First().Focus();
+                return;
+            }
+
+            var favorites = new Favorites(FavoriteMangas) { Owner = this };
+            this.Hide();
+            favorites.Closed += (s, args) => this.Show();
+            favorites.Show();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -61,24 +91,78 @@ namespace Vizsgaremek
                 }
             }
         }
+        private void InitializeHeartImages()
+        {
+            heartImages.Add("My Hero Academia", Heart_MHA);
+            heartImages.Add("One Piece", Heart_OP);
+            heartImages.Add("Dandadan", Heart_DN);
+            heartImages.Add("Demon Slayer", Heart_DS);
+            heartImages.Add("Blue Lock", Heart_BL);
+        }
+        public void RemoveFavorite(string mangaTitle)
+        {
+            FavoriteMangas.Remove(mangaTitle);
+            UpdateHeartIcons();
+        }
+
+        public List<string> GetFavorites()
+        {
+            return FavoriteMangas;
+        }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            Button? button = sender as Button;
-            string mangaTitle = button.Tag.ToString();
-            Image? img = button.Content as Image;
+            Button button = (Button)sender;
+            string mangaName = button.Tag.ToString();
+            Image heartImage = (button.Content as Image);
 
-            if (favoriteMangas.Contains(mangaTitle))
+            if (FavoriteMangas.Contains(mangaName))
             {
-                favoriteMangas.Remove(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_empty.png", UriKind.Relative));
+                FavoriteMangas.Remove(mangaName);
+                heartImage.Source = new BitmapImage(new Uri("/Images/heart_empty.png", UriKind.Relative));
             }
             else
             {
-                favoriteMangas.Add(mangaTitle);
-                img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
+                FavoriteMangas.Add(mangaName);
+                heartImage.Source = new BitmapImage(new Uri("/Images/heart_filled.png", UriKind.Relative));
             }
         }
-	}
+
+        private void UpdateHeartIcons(string mangaName, Image image)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdateHeartIcons()
+        {
+            foreach (var manga in FavoriteMangas)
+            {
+                var image = FindName($"Heart{GetMangaIndex(manga.Key)}") as Image;
+                if (image != null)
+                {
+                    image.Source = new BitmapImage(new Uri(manga.Value ?
+                        "/Images/heart_filled.png" : "/Images/heart_empty.png", UriKind.Relative));
+                }
+            }
+        }
+
+        private object GetMangaIndex(object key)
+        {
+            throw new NotImplementedException();
+        }
+
+        private int GetMangaIndex(string mangaName)
+        {
+            return mangaName switch
+            {
+                "My Hero Academia" => 1,
+                "One Piece" => 2,
+                "Dandadan" => 3,
+                "Demon Slayer" => 4,
+                "Blue Lock" => 5,
+                _ => 0
+            };
+        }
+    }
 }
     
 

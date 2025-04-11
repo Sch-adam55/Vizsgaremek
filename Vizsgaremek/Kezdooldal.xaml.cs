@@ -16,18 +16,29 @@ namespace Vizsgaremek
 {
     public partial class Kezdooldal : Window
     {
+        private Fooldal fooldal;
         public Kezdooldal()
         {
             InitializeComponent();
         }
 
-		private void OpenMangaList(object sender, RoutedEventArgs e)
-		{
-			Fooldal fooldal = new Fooldal();
-			fooldal.ShowDialog();
-		}
+        private void OpenMangaList(object sender, RoutedEventArgs e)
+        {
+            
+            if (Application.Current.Windows.OfType<Fooldal>().Any())
+            {
+                Application.Current.Windows.OfType<Fooldal>().First().Focus();
+                return;
+            }
 
-		private void OpenRegistration(object sender, RoutedEventArgs e)
+            var fooldal = new Fooldal { Owner = this };
+            this.Hide();
+            fooldal.Closed += (s, args) => this.Show();
+            fooldal.Show();
+        }
+       
+
+        private void OpenRegistration(object sender, RoutedEventArgs e)
 		{
 			Registration registration = new Registration();
 			registration.ShowDialog();
@@ -38,5 +49,5 @@ namespace Vizsgaremek
 			Profile profile = new Profile();
 			profile.ShowDialog();
 		}
-	}
+    }
 }

@@ -1,7 +1,9 @@
 ﻿using Mysqlx.Crud;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,54 +21,88 @@ namespace Vizsgaremek
     public partial class Favorites : Window
     {
         private List<string> favoriteMangas;
+        private Kezdooldal Kezdooldal;
+        private Fooldal Fooldal;
+
 
         public Favorites(List<string> favoriteMangas)
         {
             InitializeComponent();
-            this.favoriteMangas = favoriteMangas;
             LoadFavorites();
-          
-        }
 
-        private void OpenProfile_Click(object sender, RoutedEventArgs e)
+        }
+        private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
-            Profile profile = new Profile();
-            profile.ShowDialog();
+            var kezdooldal = Application.Current.Windows.OfType<Kezdooldal>().FirstOrDefault();
+            if (kezdooldal == null)
+            {
+                kezdooldal = new Kezdooldal();
+                kezdooldal.Show();
+            }
+            else
+            {
+                kezdooldal.Visibility = Visibility.Visible;
+                kezdooldal.WindowState = WindowState.Normal;
+                kezdooldal.Activate();
+                kezdooldal.Topmost = true;
+                kezdooldal.Topmost = false;
+                kezdooldal.Focus();
+            }
+            this.Close();
+        }
+        private void OpenRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            Registration registration = new Registration();
+            registration.ShowDialog();
         }
         private void OpenFooldal_Click(object sender, RoutedEventArgs e)
         {
-            Fooldal fooldal = new Fooldal();
-            fooldal.ShowDialog();
+            var fooldal = Application.Current.Windows.OfType<Fooldal>().FirstOrDefault();
+
+            if (fooldal == null)
+            {
+                fooldal = new Fooldal();
+            }
+
+            fooldal.Show();
+            fooldal.WindowState = WindowState.Normal;
+            fooldal.Focus();
+
+            this.Close();
         }
 
         private void LoadFavorites()
         {
             FavoritesListBox.Items.Clear();
-            foreach (var mangaTitle in favoriteMangas)
+
+            foreach (string mangaName in Fooldal.FavoriteMangas)
             {
                 ListBoxItem item = new ListBoxItem();
-                StackPanel panel = new StackPanel { Orientation = Orientation.Horizontal };
-
-                TextBlock mangaText = new TextBlock
+                TextBlock textBlock = new TextBlock
                 {
-                    Text = mangaTitle,
-                    Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White),
-                    VerticalAlignment = VerticalAlignment.Center
+                    Text = mangaName,
+                    Foreground = System.Windows.Media.Brushes.Black,
+                    FontSize = 16,
+                    Margin = new Thickness(10)
                 };
-                panel.Children.Add(mangaText);
 
-                Image heartImage = new Image
-                {
-                    Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative)),
-                    Width = 20,
-                    Height = 20,
-                    Margin = new Thickness(10, 0, 0, 0)
-                };
-                panel.Children.Add(heartImage);
-
-                item.Content = panel;
-                FavoritesListBox.Items.Add(item); 
+                item.Content = textBlock;
+                FavoritesListBox.Items.Add(item);
             }
+        }
+
+        private BitmapImage GetMangaImage(string mangaName)
+        {
+            string imagePath = mangaName switch
+            {
+                "My Hero Academia" => "/Images/MHA.png",
+                "One Piece" => "/Images/OP.png",
+                "Dandadan" => "/Images/DD.png",
+                "Demon Slayer" => "/Images/DS.png",
+                "Blue Lock" => "/Images/BL.png",
+                _ => "/Images/default.png"
+            };
+            return new BitmapImage(new Uri(imagePath, UriKind.Relative));
         }
     }
 }
