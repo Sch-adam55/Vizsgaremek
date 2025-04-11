@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Vizsgaremek.Favorites"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Kedvencek" Height="678" Width="800" Background="Azure"
+        Title="Kedvencek" Height="678" Width="800" Background="LightBlue"
 
         ResizeMode="NoResize">
     <Window.Resources>

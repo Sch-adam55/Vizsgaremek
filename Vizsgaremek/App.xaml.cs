@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using static Vizsgaremek.Fooldal;
+using static Vizsgaremek.Kezdooldal;
 
 namespace Vizsgaremek
 {

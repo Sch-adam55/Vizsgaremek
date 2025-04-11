@@ -158,10 +158,10 @@
 
         <Border Background="Crimson" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kezdőoldal" Background="Black" Foreground="White" Margin="5" Height="28" Width="73"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kedvencek" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenFavorites_Click" Width="68"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenRegistration_Click" Width="77"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Menü" Background="Black" Foreground="White" Margin="5" Height="28" Width="42"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Fő oldal" Background="Black" Foreground="White" Margin="5" Height="28" Width="73"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kezdőoldal" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenKezdooldal" Width="75"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kedvencek" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenFavorites_Click" Width="77"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenRegistration_Click" Width="78"/>
             </StackPanel>
         </Border>
     </Grid>

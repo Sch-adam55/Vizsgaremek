@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Vizsgaremek.Profile"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bejelentkezés" Height="300" Width="400" Background="Azure"
+        Title="Bejelentkezés" Height="300" Width="400" Background="LightBlue"
         ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="FocusVisual">

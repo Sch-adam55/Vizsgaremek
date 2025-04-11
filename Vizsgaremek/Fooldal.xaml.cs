@@ -21,7 +21,12 @@ namespace Vizsgaremek
 			InitializeComponent();
         }
 
-        private void OpenProfile_Click(object sender, RoutedEventArgs e)
+		private void OpenKezdooldal(object sender, RoutedEventArgs e)
+		{
+			Kezdooldal kezdooldal = new Kezdooldal();
+			kezdooldal.ShowDialog();
+		}
+		private void OpenProfile_Click(object sender, RoutedEventArgs e)
         {
             Profile profile = new Profile();
             profile.ShowDialog();
@@ -73,8 +78,7 @@ namespace Vizsgaremek
                 img.Source = new BitmapImage(new Uri("Images/heart_filled.png", UriKind.Relative));
             }
         }
-
-    }
+	}
 }
     
 
