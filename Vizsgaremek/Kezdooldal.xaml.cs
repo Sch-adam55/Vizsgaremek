@@ -24,7 +24,7 @@ namespace Vizsgaremek
 
         private void OpenMangaList(object sender, RoutedEventArgs e)
         {
-            
+
             if (Application.Current.Windows.OfType<Fooldal>().Any())
             {
                 Application.Current.Windows.OfType<Fooldal>().First().Focus();

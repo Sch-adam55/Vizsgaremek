@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Chapters\MHA\2.png" />
+    <None Remove="Chapters\MHA\3.png" />
     <None Remove="Images\BL.png" />
     <None Remove="Images\DN.png" />
     <None Remove="Images\DS.png" />
@@ -19,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Chapters\MHA\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\MHA\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\BL.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

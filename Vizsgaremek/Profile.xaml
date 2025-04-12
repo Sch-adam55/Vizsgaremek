@@ -66,17 +66,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border CornerRadius="20" Background="Crimson" Grid.Row="0">
-            <TextBlock Text="Profil" Foreground="White" FontSize="20" 
+        <Border CornerRadius="10" Background="Crimson" Grid.Row="0">
+            <TextBlock Text="Profil" FontWeight="Bold" Foreground="White" FontSize="20" 
                        HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
         </Border>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,18,0,0" Height="197">
-            <TextBlock  Text="Felhasználónév" Foreground="Black" Margin="5,5,0,0"/>
+            <TextBlock  Text="Felhasználónév" FontWeight="Bold" Foreground="Black" Margin="5,5,0,0"/>
             <TextBox x:Name="ProfileNameTextBox" Width="200" Height="25" Margin="5"/>
-            <TextBlock Text="Jelszó" Foreground="Black" Margin="5,5,0,0"/>
+            <TextBlock Text="Jelszó" FontWeight="Bold" Foreground="Black" Margin="5,5,0,0"/>
             <PasswordBox x:Name="PasswordBox" Width="200" Height="25" Margin="5"/>
-            <Button Style="{DynamicResource RoundButtonStyle}" Content="Bejelentkezés" Click="Button_Click" Width="100" Height="30" Background="Black" Foreground="White" Margin="10"/>
+            <Button Style="{DynamicResource RoundButtonStyle}" Content="Bejelentkezés" FontWeight="Bold" Click="Button_Click" Width="100" Height="30" Background="Black" Foreground="White" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>

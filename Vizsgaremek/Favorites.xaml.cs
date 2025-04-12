@@ -21,8 +21,8 @@ namespace Vizsgaremek
     public partial class Favorites : Window
     {
         private List<string> favoriteMangas;
-        private Kezdooldal Kezdooldal;
-        private Fooldal Fooldal;
+        private Kezdooldal kezdooldal;
+        private Fooldal fooldal;
 
 
         public Favorites(List<string> favoriteMangas)
@@ -34,20 +34,16 @@ namespace Vizsgaremek
         private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
             var kezdooldal = Application.Current.Windows.OfType<Kezdooldal>().FirstOrDefault();
+
             if (kezdooldal == null)
             {
                 kezdooldal = new Kezdooldal();
-                kezdooldal.Show();
             }
-            else
-            {
-                kezdooldal.Visibility = Visibility.Visible;
-                kezdooldal.WindowState = WindowState.Normal;
-                kezdooldal.Activate();
-                kezdooldal.Topmost = true;
-                kezdooldal.Topmost = false;
-                kezdooldal.Focus();
-            }
+
+            kezdooldal.Show();
+            kezdooldal.WindowState = WindowState.Normal;
+            kezdooldal.Focus();
+
             this.Close();
         }
         private void OpenRegistration_Click(object sender, RoutedEventArgs e)
@@ -75,7 +71,7 @@ namespace Vizsgaremek
         {
             FavoritesListBox.Items.Clear();
 
-            foreach (string mangaName in Fooldal.FavoriteMangas)
+            foreach (string mangaName in Fooldal.favoriteMangas)
             {
                 ListBoxItem item = new ListBoxItem();
                 TextBlock textBlock = new TextBlock

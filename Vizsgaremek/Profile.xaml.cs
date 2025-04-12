@@ -46,6 +46,12 @@ namespace Vizsgaremek
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Login successful, Welcome back " + profileName + " !");
+
+                    if (Application.Current.Windows.OfType<Fooldal>().FirstOrDefault() is Fooldal fooldal)
+                    {
+                        fooldal.UpdateUsername(profileName);
+                    }
+                    this.Close();
                 }
                 else
                 {

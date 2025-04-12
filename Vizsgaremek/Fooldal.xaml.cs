@@ -13,28 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 namespace Vizsgaremek
 {
-    public partial class Fooldal : Window
+    public partial class Fooldal : Window 
     {
-        public static List<string> FavoriteMangas = new List<string>();
+        public static List<string> favoriteMangas = new List<string>();
         private Favorites favorites;
-        private Kezdooldal Kezdooldal;
+        private Kezdooldal kezdooldal;
         private Dictionary<string, Image> heartImages = new Dictionary<string, Image>();
+      
 
         public Fooldal()
         {
             InitializeComponent();
             InitializeHeartImages();
-            UpdateAllHeartIcons();
         }
-
-        private void UpdateAllHeartIcons()
+        public void UpdateUsername(string username)
         {
-            throw new NotImplementedException();
+            UsernameDisplay.Text = username;
+            UsernameDisplay.Visibility=Visibility.Visible;
+            LoginButton.Visibility=Visibility.Collapsed;
+
         }
 
         private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
-
             var kezdooldal = Application.Current.Windows.OfType<Kezdooldal>().FirstOrDefault();
 
             if (kezdooldal == null)
@@ -66,12 +67,16 @@ namespace Vizsgaremek
                 return;
             }
 
-            var favorites = new Favorites(FavoriteMangas) { Owner = this };
+            var favorites = new Favorites(favoriteMangas) { Owner = this };
             this.Hide();
             favorites.Closed += (s, args) => this.Show();
             favorites.Show();
         }
-
+        private void Manga_Click(object sender, RoutedEventArgs e)
+        {
+            Chapter chapterPage = new Chapter();
+            this.Content = chapterPage; 
+        }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = SearchBox.Text.ToLower();
@@ -101,13 +106,12 @@ namespace Vizsgaremek
         }
         public void RemoveFavorite(string mangaTitle)
         {
-            FavoriteMangas.Remove(mangaTitle);
-            UpdateHeartIcons();
+            favoriteMangas.Remove(mangaTitle);
         }
 
         public List<string> GetFavorites()
         {
-            return FavoriteMangas;
+            return favoriteMangas;
         }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -115,14 +119,14 @@ namespace Vizsgaremek
             string mangaName = button.Tag.ToString();
             Image heartImage = (button.Content as Image);
 
-            if (FavoriteMangas.Contains(mangaName))
+            if (favoriteMangas.Contains(mangaName))
             {
-                FavoriteMangas.Remove(mangaName);
+                favoriteMangas.Remove(mangaName);
                 heartImage.Source = new BitmapImage(new Uri("/Images/heart_empty.png", UriKind.Relative));
             }
             else
             {
-                FavoriteMangas.Add(mangaName);
+                favoriteMangas.Add(mangaName);
                 heartImage.Source = new BitmapImage(new Uri("/Images/heart_filled.png", UriKind.Relative));
             }
         }
@@ -132,19 +136,7 @@ namespace Vizsgaremek
             throw new NotImplementedException();
         }
 
-        private void UpdateHeartIcons()
-        {
-            foreach (var manga in FavoriteMangas)
-            {
-                var image = FindName($"Heart{GetMangaIndex(manga.Key)}") as Image;
-                if (image != null)
-                {
-                    image.Source = new BitmapImage(new Uri(manga.Value ?
-                        "/Images/heart_filled.png" : "/Images/heart_empty.png", UriKind.Relative));
-                }
-            }
-        }
-
+    
         private object GetMangaIndex(object key)
         {
             throw new NotImplementedException();
