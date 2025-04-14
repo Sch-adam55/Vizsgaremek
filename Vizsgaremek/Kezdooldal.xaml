@@ -69,36 +69,36 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Border>
-            <Border CornerRadius="10" Background="Crimson" Grid.Row="0" Margin="0">
+            <Border CornerRadius="10" Background="#23263a" Grid.Row="0" Margin="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="113*"/>
                         <ColumnDefinition Width="235*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Üdvözlett az oldalon" FontWeight="Bold" Foreground="White" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10" Margin="0,-2,0,0" Grid.Column="1"/>
+                    <TextBlock Text="Üdvözlett az oldalon" FontWeight="Bold" Foreground="#8be9fd" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10" Margin="0,-2,0,0" Grid.Column="1"/>
                 </Grid>
             </Border>
         </Border>
 
-        <Border CornerRadius="50" x:Name="MainMenu" Background="Crimson" Grid.Row="1" Margin="182,76,182,136">
+        <Border CornerRadius="50" x:Name="MainMenu" Background="#23263a" Grid.Row="1" Margin="182,76,182,136">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="MangaHorizon" FontWeight="Bold" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+                <TextBlock Text="MangaHorizon" FontWeight="Bold" Foreground="#8be9fd" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20"/>
 
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button Style="{StaticResource RoundButtonStyle}" FontWeight="Bold" Content="Manga List" 
-                            Width="200" Background="Black" Foreground="White" Height="40" 
+                            Width="200" Background="Black" Foreground="#8be9fd" Height="40" 
                             Margin="0,10" Click="OpenMangaList"/>
                     <Button Style="{StaticResource RoundButtonStyle}" FontWeight="Bold" Content="Regisztráció" 
-                            Width="200" Background="Black" Foreground="White" Height="40" 
+                            Width="200" Background="Black" Foreground="#8be9fd" Height="40" 
                             Margin="0,10" Click="OpenRegistration"/>
                     <Button Style="{StaticResource RoundButtonStyle}" FontWeight="Bold" Content="Bejelentkezés" 
-                            Width="200" Background="Black" Foreground="White" Height="40" 
+                            Width="200" Background="Black" Foreground="#8be9fd" Height="40" 
                             Margin="0,10" Click="OpenProfile"/>
                 </StackPanel>
             </Grid>

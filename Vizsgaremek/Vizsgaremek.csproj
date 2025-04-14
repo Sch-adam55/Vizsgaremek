@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Chapters\DN\7.png" />
+    <None Remove="Chapters\DN\8.png" />
+    <None Remove="Chapters\DN\9.png" />
+    <None Remove="Chapters\MHA\1.png" />
     <None Remove="Chapters\MHA\2.png" />
     <None Remove="Chapters\MHA\3.png" />
+    <None Remove="Chapters\OP\1.png" />
+    <None Remove="Chapters\OP\2.png" />
+    <None Remove="Chapters\OP\3.png" />
+    <None Remove="Chapters\OP\4.png" />
+    <None Remove="Chapters\OP\5.png" />
+    <None Remove="Chapters\OP\6.png" />
     <None Remove="Images\BL.png" />
     <None Remove="Images\DN.png" />
     <None Remove="Images\DS.png" />
@@ -21,11 +31,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Chapters\DN\7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\DN\8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\DN\9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\MHA\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Chapters\MHA\2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Chapters\MHA\3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\OP\4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\OP\5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Chapters\OP\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\BL.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

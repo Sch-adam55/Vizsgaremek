@@ -69,31 +69,31 @@
             <RowDefinition  Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" Background="Crimson" Grid.Row="0" Margin="0">
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="0" Margin="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="113*"/>
                     <ColumnDefinition Width="235*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="MangaHorizon" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="64,0,0,0" Grid.Column="1"/>
-                <TextBlock Text="Kereső" Foreground="White" FontWeight="Bold" Margin="10,14,170,10" />
+                <TextBlock Text="MangaHorizon" Foreground="#8be9fd" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="64,0,0,0" Grid.Column="1"/>
+                <TextBlock Text="Kereső" Foreground="#8be9fd" FontWeight="Bold" Margin="10,14,170,10" />
                 <TextBox x:Name="SearchBox" VerticalAlignment="Center" Margin="51,0,51,0" TextChanged="SearchBox_TextChanged" Height="27"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="LoginButton" FontWeight="Bold" Content="Bejelentkezés" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10,5" Foreground="White" Background="Black" Click="OpenProfile_Click" Margin="421,0,0,0" />
+                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="LoginButton" FontWeight="Bold" Content="Bejelentkezés" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10,5" Foreground="#8be9fd" Background="Black" Click="OpenProfile_Click" Margin="421,0,0,0" />
                 <TextBlock x:Name="UsernameDisplay" Visibility="Collapsed" FontSize="20" Foreground="White" VerticalAlignment="Center" Margin="433,0,0,0" Grid.Column="1" />
             </Grid>
         </Border>
 
         <ListBox x:Name="MangaList" Background="LightBlue" Grid.Row="1" Grid.RowSpan="2">
             <ListBoxItem x:Name="Manga1" Tag="My Hero Academia">
-                <Border CornerRadius="20" Background="#23263a" Width="281">
+                <Border CornerRadius="20" Background="#2b2d42" Width="281">
                     <Grid Height="104" Width="265">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Button Click="Manga_Click" Background="Transparent" BorderThickness="0" Width="88" Height="90" Margin="0,0,23,0">
+                        <Button Click="MHA_Click" Background="Transparent" BorderThickness="0" Width="88" Height="90" Margin="0,0,23,0">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Image Width="88" Height="90" Source="/Images/MHA.png"/>
@@ -108,21 +108,21 @@
                 </Border>
             </ListBoxItem>
             <ListBoxItem x:Name="Manga2" Tag="One Piece">
-                <Border CornerRadius="20" Background="#23263a" Width="281">
+                <Border CornerRadius="20" Background="#2b2d42" Width="281">
                     <Grid Height="104" Width="265">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Button Click="Manga_Click" Background="Transparent" BorderThickness="0" Width="88" Height="90" Margin="0,0,23,0" Tag="OP">
+                        <Button Click="OP_Click" Background="Transparent" BorderThickness="0" Width="88" Height="90" Margin="0,0,23,0" Tag="OP">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Image Width="88" Height="90" Source="/Images/OP.png"/>
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <TextBlock x:Name="MangaName2" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="10,30,89,0" Grid.Column="1" Height="50" Grid.ColumnSpan="2"><Run Text="One Piece"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/><LineBreak/><Run Language="hu-hu"/><LineBreak/><Run/></TextBlock>
+                        <TextBlock x:Name="MangaName2" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="95,30,115,0" Height="50" Grid.ColumnSpan="3"><Run Text="One Piece"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/><LineBreak/><Run Language="hu-hu"/><LineBreak/><Run/></TextBlock>
                         <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2"  Tag="One Piece" Margin="519,0,-519,0">
                             <Image x:Name="Heart_OP" Width="128" Height="30" Source="/Images/heart_empty.png"/>
                         </Button>
@@ -130,14 +130,20 @@
                 </Border>
             </ListBoxItem>
             <ListBoxItem x:Name="Manga3" Tag="Dandadan">
-                <Border CornerRadius="20" Background="#23263a" Width="281">
+                <Border CornerRadius="20" Background="#2b2d42" Width="281">
                     <Grid Height="104" Width="265">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Image Width="88" Height="90" Source="/Images/DN.png" Margin="0,0,23,0"/>
+                        <Button Click="DN_Click" Background="Transparent" BorderThickness="0" Width="88" Height="90" Margin="0,0,23,0" Tag="OP">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Width="88" Height="90" Source="/Images/DN.png"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                         <TextBlock x:Name="MangaName3" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3" Height="43"><Run Text="Dandadan"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/></TextBlock>
                         <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                             <Image  x:Name="Heart_DN" Width="128" Height="30" Source="/Images/heart_empty.png"/>
@@ -146,7 +152,7 @@
                 </Border>
             </ListBoxItem>
             <ListBoxItem x:Name="Manga4" Tag="Demon Slayer">
-                <Border CornerRadius="20" Background="#23263a" Width="281">
+                <Border CornerRadius="20" Background="#2b2d42" Width="281">
                     <Grid Height="104" Width="265">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -162,7 +168,7 @@
                 </Border>
             </ListBoxItem>
             <ListBoxItem x:Name="Manga5" Tag="Blue Lock">
-                <Border CornerRadius="20" Background="#23263a" Width="281">
+                <Border CornerRadius="20" Background="#2b2d42" Width="281">
                     <Grid Height="104" Width="265">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -179,12 +185,12 @@
             </ListBoxItem>
         </ListBox>
 
-        <Border CornerRadius="10" Background="Crimson" Grid.Row="2">
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Főoldal" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Width="73"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kezdőoldal" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenKezdooldal" Width="75"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kedvencek" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenFavorites_Click" Width="77"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenRegistration_Click" Width="78"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Főoldal" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="5" Height="28" Width="73"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kezdőoldal" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="5" Height="28" Click="OpenKezdooldal" Width="75"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kedvencek" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="5" Height="28" Click="OpenFavorites_Click" Width="77"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="5" Height="28" Click="OpenRegistration_Click" Width="78"/>
             </StackPanel>
         </Border>
     </Grid>

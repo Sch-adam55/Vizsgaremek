@@ -1,9 +1,13 @@
-﻿<Window x:Class="Vizsgaremek.Registration"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:l="clr.namespace:DotnetDocsSample"
-        Title="Regisztráció" Height="330" Width="400" Background="LightBlue">
-    <Window.Resources>
+﻿<Page x:Class="Vizsgaremek.Chapter1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Vizsgaremek"
+      mc:Ignorable="d" 
+      d:DesignHeight="690" d:DesignWidth="800" Background="LightBlue"
+      Title="Chapter">
+    <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -60,26 +64,38 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+    </Page.Resources>
     <Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" Background="#23263a" Grid.Row="0">
-            <TextBlock Text="Regisztráció" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" 
-                       HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
-		</Border>
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="0" Margin="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*"/>
+                    <ColumnDefinition Width="235*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="One Piece" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="83,0,0,0" Grid.Column="1" Width="113"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="BackToFooldalButton" Click="OpenFooldal_Click" Content="Vissza" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="21,9,157,10" Height="28"/>
+            </Grid>
+        </Border>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,7,0,0" Grid.Row="1">
-            <TextBlock Text="Email" FontWeight="Bold" Foreground="Black" Margin="5,5,0,0"/>
-            <TextBox x:Name="EmailTextBox" Width="200" Height="25" Margin="5"/>
-            <TextBlock Text="Felhasználónév" FontWeight="Bold" Foreground="Black" Margin="5,5,0,0"/>
-            <TextBox x:Name="ProfileNameTextBox" Width="200" Height="25"  Margin="5"/>
-            <TextBlock Text="Jelszó" FontWeight="Bold" Foreground="Black" Margin="5,5,0,0"/>
-            <PasswordBox x:Name="PasswordBox" Width="200" Height="25" Margin="5" />
-            <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" FontWeight="Bold" Width="100" Height="30" Background="Black" Foreground="#8be9fd" Margin="10" Click="Button_Click"/>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="ContentPanel" Orientation="Vertical" HorizontalAlignment="Center">
+                <Image Source="/Chapters/OP/4.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
+                <Image Source="/Chapters/OP/5.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
+                <Image Source="/Chapters/OP/6.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Chapter - 1" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" Padding="10" Width="130"/>
+            </StackPanel>
+        </Border>
     </Grid>
-</Window>
+</Page>

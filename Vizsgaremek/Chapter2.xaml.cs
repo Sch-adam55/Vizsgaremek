@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Path = System.IO.Path;
 
 namespace Vizsgaremek
 {
-    public partial class Chapter : Page
+    public partial class Chapter2 : Page
     {
         private Fooldal Fooldal;
-        public Chapter()
+        public Chapter2()
         {
             InitializeComponent();
-            
         }
         private void OpenFooldal_Click(object sender, RoutedEventArgs e)
         {
@@ -31,7 +28,7 @@ namespace Vizsgaremek
 
             if (fooldal != null)
             {
-                fooldal.WindowState = WindowState.Normal; 
+                fooldal.WindowState = WindowState.Normal;
                 fooldal.Activate();
                 fooldal.Focus();
 

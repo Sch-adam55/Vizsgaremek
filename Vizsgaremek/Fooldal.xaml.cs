@@ -72,10 +72,20 @@ namespace Vizsgaremek
             favorites.Closed += (s, args) => this.Show();
             favorites.Show();
         }
-        private void Manga_Click(object sender, RoutedEventArgs e)
+        private void MHA_Click(object sender, RoutedEventArgs e)
         {
             Chapter chapterPage = new Chapter();
             this.Content = chapterPage; 
+        }
+        private void OP_Click(object sender, RoutedEventArgs e)
+        {
+            Chapter1 chapterPage1 = new Chapter1();
+            this.Content = chapterPage1;
+        }
+        private void DN_Click(object sender, RoutedEventArgs e)
+        {
+            Chapter2 chapterPage2 = new Chapter2();
+            this.Content = chapterPage2;
         }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -85,7 +95,10 @@ namespace Vizsgaremek
 
             for (int i = 0; i < items.Length; i++)
             {
-                var mangaName = textBlocks[i].Text.ToLower();
+                
+                var firstRun = textBlocks[i].Inlines.FirstInline as Run;
+                var mangaName = firstRun?.Text.ToLower() ?? "";
+
                 if (string.IsNullOrEmpty(searchText) || mangaName.Contains(searchText))
                 {
                     items[i].Visibility = Visibility.Visible;

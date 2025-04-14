@@ -72,27 +72,29 @@
             <RowDefinition  Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" Background="Crimson" Grid.Row="0" Margin="0">
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="0" Margin="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="113*"/>
                     <ColumnDefinition Width="235*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Chapter - 1" FontWeight="Bold" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="64,0,0,0" Grid.Column="1"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="BackToFooldalButton" Content="Főoldal" FontWeight="Bold" Background="Black" Foreground="White" Margin="21,9,157,10" Height="28"/>
+                <TextBlock Text="My Hero Academia" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="49,0,0,0" Grid.Column="1" Width="194"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="BackToFooldalButton" Click="OpenFooldal_Click" Content="Vissza" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="21,9,157,10" Height="28"/>
             </Grid>
         </Border>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="ContentPanel" Orientation="Vertical" HorizontalAlignment="Center">
-                <!-- Ide kerülnek dinamikusan a képek -->
+                <Image Source="/Chapters/MHA/1.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
+                <Image Source="/Chapters/MHA/2.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
+                <Image Source="/Chapters/MHA/3.png" Width="500" Margin="0,20" HorizontalAlignment="Center"/>
             </StackPanel>
         </ScrollViewer>
 
-        <Border CornerRadius="10" Background="Crimson" Grid.Row="2">
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Manga" FontWeight="Bold" Foreground="White" FontSize="20" Padding="10" Width="92"/>
+                <TextBlock Text="Chapter - 1" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" Padding="10" Width="130"/>
             </StackPanel>
         </Border>
     </Grid>

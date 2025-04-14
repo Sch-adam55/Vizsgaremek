@@ -67,20 +67,25 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" Background="Crimson" Grid.Row="0" Margin="0">
-            <TextBlock Text="Kedvencek" FontWeight="Bold" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+        <Border CornerRadius="10" Background="#23263a" Grid.Row="0" Margin="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*"/>
+                    <ColumnDefinition Width="235*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Kedvencek" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" Margin="77,0,0,0" Grid.Column="1" Width="126"/>
+                <Button Style="{DynamicResource RoundButtonStyle}" x:Name="BackToFooldalButton" Click="OpenFooldal_Click" Content="Vissza" FontWeight="Bold" Background="Black" Foreground="#8be9fd" Margin="21,9,157,10" Height="28"/>
+            </Grid>
         </Border>
 
         <ListBox x:Name="FavoritesListBox" Background="LightBlue" Grid.Row="1">
             <!-- This will be populated dynamically -->
         </ListBox>
 
-        <Border CornerRadius="10" Background="Crimson" Margin="0,569,0,0" Grid.Row="1" Height="46" VerticalAlignment="Top">
+        <Border CornerRadius="10" Background="#23263a" Margin="0,560,0,0" Grid.Row="1" Height="46" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Föoldal" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Width="73" Click="OpenFooldal_Click"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kezdőoldal" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenKezdooldal" Width="75"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Kedvencek" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Width="77"/>
-                <Button Style="{DynamicResource RoundButtonStyle}" Content="Regisztráció" FontWeight="Bold" Background="Black" Foreground="White" Margin="5" Height="28" Click="OpenRegistration_Click" Width="78"/>
+                <TextBlock Text="Kedvencek" FontWeight="Bold" Foreground="#8be9fd" FontSize="20" Padding="10" Width="126"/>
             </StackPanel>
         </Border>
     </Grid>
