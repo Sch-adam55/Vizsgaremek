@@ -79,8 +79,26 @@
             </Grid>
         </Border>
 
-        <ListBox x:Name="FavoritesListBox" Background="LightBlue" Grid.Row="1">
-            <!-- This will be populated dynamically -->
+        <ListBox x:Name="FavoritesList" Background="LightBlue" Margin="0,0,0,67" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="20" Background="#2b2d42" Width="281" Margin="5">
+                        <Grid Height="104" Width="265">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding ImagePath}" Width="88" Height="90" Margin="0,0,23,0"/>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
+                                <TextBlock Text="{Binding ChapterInfo}" Foreground="LightGray"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
         <Border CornerRadius="10" Background="#23263a" Margin="0,560,0,0" Grid.Row="1" Height="46" VerticalAlignment="Top">

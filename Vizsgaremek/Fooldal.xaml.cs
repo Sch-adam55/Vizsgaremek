@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,16 +17,17 @@ namespace Vizsgaremek
     public partial class Fooldal : Window 
     {
         public static List<string> favoriteMangas = new List<string>();
+       
+        public static ObservableCollection<object> FavoriteItems { get; } = new ObservableCollection<object>();
+
         private Favorites favorites;
         private Kezdooldal kezdooldal;
-        private Dictionary<string, Image> heartImages = new Dictionary<string, Image>();
-      
-
         public Fooldal()
         {
             InitializeComponent();
-            InitializeHeartImages();
+            
         }
+        
         public void UpdateUsername(string username)
         {
             UsernameDisplay.Text = username;
@@ -33,7 +35,6 @@ namespace Vizsgaremek
             LoginButton.Visibility=Visibility.Collapsed;
 
         }
-
         private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
             var kezdooldal = Application.Current.Windows.OfType<Kezdooldal>().FirstOrDefault();
@@ -109,65 +110,62 @@ namespace Vizsgaremek
                 }
             }
         }
-        private void InitializeHeartImages()
-        {
-            heartImages.Add("My Hero Academia", Heart_MHA);
-            heartImages.Add("One Piece", Heart_OP);
-            heartImages.Add("Dandadan", Heart_DN);
-            heartImages.Add("Demon Slayer", Heart_DS);
-            heartImages.Add("Blue Lock", Heart_BL);
-        }
-        public void RemoveFavorite(string mangaTitle)
-        {
-            favoriteMangas.Remove(mangaTitle);
-        }
-
-        public List<string> GetFavorites()
-        {
-            return favoriteMangas;
-        }
-        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        private async void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            string mangaName = button.Tag.ToString();
-            Image heartImage = (button.Content as Image);
+            button.IsEnabled = false; // Gomb letiltása kattintáskor
 
-            if (favoriteMangas.Contains(mangaName))
+            await Task.Run(() => // Aszinkron kezelés a UI fagyás megelőzésére
             {
-                favoriteMangas.Remove(mangaName);
-                heartImage.Source = new BitmapImage(new Uri("/Images/heart_empty.png", UriKind.Relative));
+                Dispatcher.Invoke(() => // UI thread-en végrehajtás
+                {
+                    try
+                    {
+                        var listBoxItem = FindParent<ListBoxItem>(button);
+                        if (listBoxItem != null && listBoxItem.Content != null)
+                        {
+                            if (FavoriteItems.Contains(listBoxItem.Content))
+                            {
+                                FavoriteItems.Remove(listBoxItem.Content);
+                                ((Image)button.Content).Source = new BitmapImage(
+                                    new Uri("/Images/heart_empty.png", UriKind.Relative));
+                            }
+                            else
+                            {
+                                FavoriteItems.Add(listBoxItem.Content);
+                                ((Image)button.Content).Source = new BitmapImage(
+                                    new Uri("/Images/heart_filled.png", UriKind.Relative));
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        button.IsEnabled = true; // Gomb újra engedélyezése
+                    }
+                });
+            });
+        }
+
+        private static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(child);
+            while (parent != null && !(parent is T))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
             }
-            else
-            {
-                favoriteMangas.Add(mangaName);
-                heartImage.Source = new BitmapImage(new Uri("/Images/heart_filled.png", UriKind.Relative));
-            }
+            return parent as T;
         }
+       
 
-        private void UpdateHeartIcons(string mangaName, Image image)
+        public class MangaItem
         {
-            throw new NotImplementedException();
-        }
-
-    
-        private object GetMangaIndex(object key)
-        {
-            throw new NotImplementedException();
-        }
-
-        private int GetMangaIndex(string mangaName)
-        {
-            return mangaName switch
-            {
-                "My Hero Academia" => 1,
-                "One Piece" => 2,
-                "Dandadan" => 3,
-                "Demon Slayer" => 4,
-                "Blue Lock" => 5,
-                _ => 0
-            };
+            public string Name { get; set; }
+            public string ImagePath { get; set; }
+            public string ChapterInfo { get; set; }
         }
     }
+
 }
+
     
 

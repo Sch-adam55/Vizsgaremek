@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,45 @@ namespace Vizsgaremek
         private List<string> favoriteMangas;
         private Kezdooldal kezdooldal;
         private Fooldal fooldal;
-
-
         public Favorites(List<string> favoriteMangas)
         {
             InitializeComponent();
-            LoadFavorites();
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                FavoritesList.ItemsSource = Fooldal.FavoriteItems;
+            }), System.Windows.Threading.DispatcherPriority.Background);
 
+            FavoritesList.DataContext = Fooldal.FavoriteItems;
+
+            FavoritesList.Loaded += (s, e) =>
+            {
+                foreach (var item in FavoritesList.Items)
+                {
+                    var container = FavoritesList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
+                    if (container != null)
+                    {
+                        var border = VisualTreeHelper.GetChild(container, 0) as Border;
+                        if (border != null)
+                        {
+                            var contentPresenter = VisualTreeHelper.GetChild(border, 0) as ContentPresenter;
+                            if (contentPresenter != null)
+                            {
+                                var grid = VisualTreeHelper.GetChild(contentPresenter, 0) as Grid;
+                                if (grid != null)
+                                {
+                                    foreach (var child in grid.Children)
+                                    {
+                                        if (child is Button button && button.Tag != null)
+                                        {
+                                            button.Click += FavoriteButton_Click;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
         }
         private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
@@ -66,39 +99,26 @@ namespace Vizsgaremek
 
             this.Close();
         }
-
-        private void LoadFavorites()
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            FavoritesListBox.Items.Clear();
+            // Ugyanaz a logika, mint a főoldalon
+            Button button = (Button)sender;
+            var listBoxItem = FindParent<ListBoxItem>(button);
 
-            foreach (string mangaName in Fooldal.favoriteMangas)
+            if (listBoxItem != null && listBoxItem.Content != null)
             {
-                ListBoxItem item = new ListBoxItem();
-                TextBlock textBlock = new TextBlock
-                {
-                    Text = mangaName,
-                    Foreground = System.Windows.Media.Brushes.Black,
-                    FontSize = 16,
-                    Margin = new Thickness(10)
-                };
-
-                item.Content = textBlock;
-                FavoritesListBox.Items.Add(item);
+                Fooldal.FavoriteItems.Remove(listBoxItem.Content);
+                ((Image)button.Content).Source = new BitmapImage(new Uri("/Images/heart_empty.png", UriKind.Relative));
             }
         }
-
-        private BitmapImage GetMangaImage(string mangaName)
+        private static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
-            string imagePath = mangaName switch
+            var parent = VisualTreeHelper.GetParent(child);
+            while (parent != null && !(parent is T))
             {
-                "My Hero Academia" => "/Images/MHA.png",
-                "One Piece" => "/Images/OP.png",
-                "Dandadan" => "/Images/DD.png",
-                "Demon Slayer" => "/Images/DS.png",
-                "Blue Lock" => "/Images/BL.png",
-                _ => "/Images/default.png"
-            };
-            return new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+            return parent as T;
         }
     }
 }
