@@ -145,7 +145,7 @@
                             </Button.Template>
                         </Button>
                         <TextBlock x:Name="MangaName3" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3" Height="43"><Run Text="Dandadan"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/></TextBlock>
-                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
+                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="Dandadan" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                             <Image  x:Name="Heart_DN" Width="128" Height="30" Source="/Images/heart_empty.png"/>
                         </Button>
                     </Grid>
@@ -161,7 +161,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Width="88" Height="90" Source="/Images/DS.png" Margin="0,0,23,0"/>
                         <TextBlock x:Name="MangaName4" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3" Height="48"><Run Text="Demon Slayer"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/></TextBlock>
-                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
+                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="Demon Slayer" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                             <Image  x:Name="Heart_DS" Width="128" Height="30" Source="/Images/heart_empty.png"/>
                         </Button>
                     </Grid>
@@ -177,7 +177,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Width="88" Height="90" Source="/Images/BL.png" Margin="0,0,23,0"/>
                         <TextBlock x:Name="MangaName5" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="99,0,41,0" Grid.ColumnSpan="3" Height="39"><Run Text="Blue Lock"/><LineBreak/><Run Language="hu-hu" Text="Chapter-1"/></TextBlock>
-                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="My Hero Academia" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
+                        <Button Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Grid.Column="2" Tag="Blue Lock" RenderTransformOrigin="1.406,0.483" Margin="523,0,-523,0">
                             <Image  x:Name="Heart_BL" Width="128" Height="30" Source="/Images/heart_empty.png" RenderTransformOrigin="0.883,0.5"/>
                         </Button>
                     </Grid>

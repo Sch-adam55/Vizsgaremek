@@ -16,53 +16,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static Vizsgaremek.Fooldal;
 
 namespace Vizsgaremek
 {
     public partial class Favorites : Window
     {
-        private List<string> favoriteMangas;
+        private List<Fooldal.MangaItem> favoriteMangas;
         private Kezdooldal kezdooldal;
         private Fooldal fooldal;
-        public Favorites(List<string> favoriteMangas)
+        private List<Fooldal.MangaItem> FavoriteMangas;
+        public Favorites(List<Fooldal.MangaItem> favoriteMangas)
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                FavoritesList.ItemsSource = Fooldal.FavoriteItems;
-            }), System.Windows.Threading.DispatcherPriority.Background);
-
-            FavoritesList.DataContext = Fooldal.FavoriteItems;
-
-            FavoritesList.Loaded += (s, e) =>
-            {
-                foreach (var item in FavoritesList.Items)
-                {
-                    var container = FavoritesList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
-                    if (container != null)
-                    {
-                        var border = VisualTreeHelper.GetChild(container, 0) as Border;
-                        if (border != null)
-                        {
-                            var contentPresenter = VisualTreeHelper.GetChild(border, 0) as ContentPresenter;
-                            if (contentPresenter != null)
-                            {
-                                var grid = VisualTreeHelper.GetChild(contentPresenter, 0) as Grid;
-                                if (grid != null)
-                                {
-                                    foreach (var child in grid.Children)
-                                    {
-                                        if (child is Button button && button.Tag != null)
-                                        {
-                                            button.Click += FavoriteButton_Click;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
+            this.favoriteMangas = favoriteMangas;
+            FavoritesList.ItemsSource = this.favoriteMangas;
         }
         private void OpenKezdooldal(object sender, RoutedEventArgs e)
         {
@@ -101,16 +69,17 @@ namespace Vizsgaremek
         }
         private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
-            // Ugyanaz a logika, mint a főoldalon
             Button button = (Button)sender;
-            var listBoxItem = FindParent<ListBoxItem>(button);
+            var mangaItem = (Fooldal.MangaItem)button.DataContext;
 
-            if (listBoxItem != null && listBoxItem.Content != null)
-            {
-                Fooldal.FavoriteItems.Remove(listBoxItem.Content);
-                ((Image)button.Content).Source = new BitmapImage(new Uri("/Images/heart_empty.png", UriKind.Relative));
-            }
+           
+            favoriteMangas.Remove(mangaItem);
+            Fooldal.FavoriteItems.Remove(mangaItem);
+
+            
+            FavoritesList.Items.Refresh();
         }
+        
         private static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
             var parent = VisualTreeHelper.GetParent(child);

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,17 +19,62 @@ namespace Vizsgaremek
     public partial class Fooldal : Window 
     {
         public static List<string> favoriteMangas = new List<string>();
-       
-        public static ObservableCollection<object> FavoriteItems { get; } = new ObservableCollection<object>();
+        public static ObservableCollection<MangaItem> FavoriteItems { get; } = new ObservableCollection<MangaItem>();
+        private Dictionary<string, MangaItem> mangaItems = new Dictionary<string, MangaItem>();
+        private Dictionary<string, Image> heartImages = new Dictionary<string, Image>();
 
         private Favorites favorites;
         private Kezdooldal kezdooldal;
         public Fooldal()
         {
             InitializeComponent();
-            
+            InitializeMangaItems();
+
         }
-        
+        private void InitializeMangaItems()
+        {
+            mangaItems.Add("My Hero Academia", new MangaItem
+            {
+                Name = "My Hero Academia",
+                ImagePath = "/Images/MHA.png",
+                ChapterInfo = "Chapter-1"
+            });
+
+            mangaItems.Add("One Piece", new MangaItem
+            {
+                Name = "One Piece",
+                ImagePath = "/Images/OP.png",
+                ChapterInfo = "Chapter-1"
+            });
+
+            mangaItems.Add("Dandadan", new MangaItem
+            {
+                Name = "Dandadan",
+                ImagePath = "/Images/DN.png",
+                ChapterInfo = "Chapter-1"
+            });
+
+            mangaItems.Add("Demon Slayer", new MangaItem
+            {
+                Name = "Demon Slayer",
+                ImagePath = "/Images/DS.png",
+                ChapterInfo = "Chapter-1"
+            });
+
+            mangaItems.Add("Blue Lock", new MangaItem
+            {
+                Name = "Blue Lock",
+                ImagePath = "/Images/BL.png",
+                ChapterInfo = "Chapter-1"
+            });
+
+            heartImages.Add("My Hero Academia", Heart_MHA);
+            heartImages.Add("One Piece", Heart_OP);
+            heartImages.Add("Dandadan", Heart_DN);
+            heartImages.Add("Demon Slayer", Heart_DS);
+            heartImages.Add("Blue Lock", Heart_BL);
+        }
+
         public void UpdateUsername(string username)
         {
             UsernameDisplay.Text = username;
@@ -68,7 +115,7 @@ namespace Vizsgaremek
                 return;
             }
 
-            var favorites = new Favorites(favoriteMangas) { Owner = this };
+            var favorites = new Favorites(FavoriteItems.ToList()) { Owner = this };
             this.Hide();
             favorites.Closed += (s, args) => this.Show();
             favorites.Show();
@@ -110,52 +157,45 @@ namespace Vizsgaremek
                 }
             }
         }
-        private async void FavoriteButton_Click(object sender, RoutedEventArgs e)
+        private void FavoriteButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            button.IsEnabled = false; // Gomb letiltása kattintáskor
+            string mangaName = (string)button.Tag;
 
-            await Task.Run(() => // Aszinkron kezelés a UI fagyás megelőzésére
+            if (mangaItems.TryGetValue(mangaName, out var mangaItem))
             {
-                Dispatcher.Invoke(() => // UI thread-en végrehajtás
+                if (FavoriteItems.Contains(mangaItem))
                 {
-                    try
-                    {
-                        var listBoxItem = FindParent<ListBoxItem>(button);
-                        if (listBoxItem != null && listBoxItem.Content != null)
-                        {
-                            if (FavoriteItems.Contains(listBoxItem.Content))
-                            {
-                                FavoriteItems.Remove(listBoxItem.Content);
-                                ((Image)button.Content).Source = new BitmapImage(
-                                    new Uri("/Images/heart_empty.png", UriKind.Relative));
-                            }
-                            else
-                            {
-                                FavoriteItems.Add(listBoxItem.Content);
-                                ((Image)button.Content).Source = new BitmapImage(
-                                    new Uri("/Images/heart_filled.png", UriKind.Relative));
-                            }
-                        }
-                    }
-                    finally
-                    {
-                        button.IsEnabled = true; // Gomb újra engedélyezése
-                    }
-                });
-            });
+                   
+                    FavoriteItems.Remove(mangaItem);
+                    heartImages[mangaName].Source = new BitmapImage(
+                        new Uri("/Images/heart_empty.png", UriKind.Relative));
+                }
+                else
+                {
+                    
+                    FavoriteItems.Add(mangaItem);
+                    heartImages[mangaName].Source = new BitmapImage(
+                        new Uri("/Images/heart_filled.png", UriKind.Relative));
+                }
+            }
         }
 
         private static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
-            var parent = VisualTreeHelper.GetParent(child);
-            while (parent != null && !(parent is T))
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            while (parent != null)
             {
+                if (parent is T typedParent)
+                {
+                    return typedParent;
+                }
                 parent = VisualTreeHelper.GetParent(parent);
             }
-            return parent as T;
+
+            return null;
         }
-       
 
         public class MangaItem
         {
@@ -164,7 +204,6 @@ namespace Vizsgaremek
             public string ChapterInfo { get; set; }
         }
     }
-
 }
 
     

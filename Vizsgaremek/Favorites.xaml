@@ -82,19 +82,24 @@
         <ListBox x:Name="FavoritesList" Background="LightBlue" Margin="0,0,0,67" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="20" Background="#2b2d42" Width="281" Margin="5">
-                        <Grid Height="104" Width="265">
+                    <Border CornerRadius="20" Background="#2b2d42" Width="300">
+                        <Grid Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding ImagePath}" Width="88" Height="90" Margin="0,0,23,0"/>
+                            <Image Grid.Column="0" Source="{Binding ImagePath}" Width="88" Height="90"/>
 
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
-                                <TextBlock Text="{Binding ChapterInfo}" Foreground="LightGray"/>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" VerticalAlignment="Center" Foreground="White" />
+                                <TextBlock Text="{Binding ChapterInfo}" FontSize="12" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" />
                             </StackPanel>
+
+                            <Button Grid.Column="2" Click="FavoriteButton_Click" Background="Transparent" BorderThickness="0" Margin="520,0,-520,0" >
+                                <Image Source="/Images/heart_filled.png" Width="128" Height="30" />
+                            </Button>
                         </Grid>
                     </Border>
                 </DataTemplate>
