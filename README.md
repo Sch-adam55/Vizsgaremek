@@ -9,7 +9,7 @@ Főbb jellemzők:
 Telepítés és futtatás:
 Előfeltételek
 - Node.js (ha JavaScript projekt)
-- MySQL/PostgreSQL (ha adatbázis használat)
+- MySQL/PostgreSQL 
 - C# (Asztali alkalmazás)
 
 Telepítési lépések
@@ -29,7 +29,7 @@ Adatbázis beállítása:
 Importáld az adatbázis dump fájlt (pl. database/dump.sql):
 bash
 Copy
-mysql -u felhasználónév -p adatbázis_név < database/dump.sql
+mysql -u felhasználónév -p ikt_project < database/dump.sql
 Környezeti változók beállítása:
 
 Hozz létre egy .env fájlt a gyökérkönyvtárban (lásd .env.example sablont):
