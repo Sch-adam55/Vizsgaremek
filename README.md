@@ -51,7 +51,7 @@ Alapvető műveletek:
 - Nyisd meg a böngésződ, és menj a http://localhost:3000 címre.
 - Jelentkezz be a teszt felhasználóval (pl. admin@example.com / jelszo123).
 
-API végpontok (ha van):
+API végpontok :
 GET /api/users – Kilistázza a felhasználókat.
 
 Projekt struktúra:
