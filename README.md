@@ -1,4 +1,4 @@
- Vizsgaremek - Manga Horizons
+Vizsgaremek - Manga Horizons
 Rövid leírás: Ez a projekt egy [projekt célja, pl. "webalkalmazás, adatbázis-kezelő rendszer, stb."], amelyet a [kurzus/vizsga] keretében készítettem.
 
 Főbb jellemzők:
@@ -67,3 +67,4 @@ Vizsgaremek/
 
 Licenc
 Ez a projekt az MIT licenc alatt áll (ha van licencfájl).
+Backend: https://github.com/Joseph867/Manga_Horizons.git
