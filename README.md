@@ -2,9 +2,9 @@ Vizsgaremek - Manga Horizons
 Rövid leírás: Ez a projekt egy [projekt célja, pl. "webalkalmazás, adatbázis-kezelő rendszer, stb."], amelyet a [kurzus/vizsga] keretében készítettem.
 
 Főbb jellemzők:
-- Funkció 1 (pl. felhasználói bejelentkezés)
-- Funkció 2 (pl. adatok vizualizációja)
-- Funkció 3 (pl. REST API végpontok)
+- felhasználói bejelentkezés
+- adatok vizualizációja
+- REST API végpontok
 
 Telepítés és futtatás:
 Előfeltételek
